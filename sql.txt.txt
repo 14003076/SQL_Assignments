@@ -28,9 +28,7 @@
 
 5)LIST ALL EMPLOYEE WHO ARE WORKING IN MARKETING DEPARTMENT AND EARNING MORE THEN MARTIN
 
----> select e.employee_id,e.first_name,e.job_id,e.salary,d.department_id,d.department_name from employees e inner join departments d on 
-
-     d.department_id=e.department_id where department_name='MARKETING' and salary > (select salary from employees where first_name='Donald');
+---> select e.employee_id,e.first_name,e.job_id,e.salary,d.department_id,d.department_name from employees e inner join departments d on d.department_id=e.department_id where department_name='MARKETING' and salary > (select salary from employees where first_name='Donald') and d.department_name="shipping");
 
 
 6)DISPLAY EMPLOYEE NUMBER, NAME,DEPT NUMBER, DEPT NAME, AND LOCATION
@@ -55,7 +53,39 @@
 
 9)WRITE A SQL STATEMENT TO DISPLAY THE LOWEST PAID EMPLOYEE'S (NAME , SALARY , DEPARTMENT NAME) IN THE RESPECTIVE DEPARTMENT.
 
---->
+---> select e.first_name,min(e.salary),d.department_name from employees e inner join departments d on d.department_id=e.department_id group by e.department_id;
+
+
+10)WRITE A SQL STATEMENT TO DISPLAY THE HIGHEST PAID EMPLOYEE'S (NAME, JOB, MANAGER NAME, SALARY AND DEPARTMENT NAME AND DEPARTMENT NO.) IN THE RESPECTIVE DEPARTMENT.
+
+---> select e.first_name,e.employee_id,e.job_id,e.manager_id,max(e.salary),d.department_name,e.first_name as manager_name
+    
+     from employees e inner join departments d on d.department_id=e.department_id group by department_name;
+
+
+11)WRITE A SQL STATEMENT TO DISPLAY THE EMPLOYEE NAME (BOSS) AND NUMBER OF EMPLOYEE (SUBORDINATES) DIRECTLY REPORTING TO HIM?
+
+--->SELECT e1.first_name AS manager, count(e2.employee_id) AS emp_count FROM employees AS e1 JOIN employees AS e2 
+
+ ON e2.manager_id = e1.employee_id  GROUP BY e2.manager_id  ORDER BY emp_count DESC;
+
+
+
+
+
+14)	 FIND THE 2ND MINIMUM SALARY OF THE EMPLOYEE.
+
+---> SELECT max(salary) FROM employees WHERE salary < (SELECT max(salary) FROM employees);
+
+  
+
+
+
+15)	 FIND THE MAX 3 SALARIES FROM EMPLOYEE TABLE.
+
+
+
+--->	SELECT first_name, salary FROM employees ORDER BY salary DESC LIMIT 3;
 	
 
 
