@@ -71,6 +71,27 @@
 
 
 
+12)	DISPLAY THE NAMES, DESIGNATION AND SALARIES OF ALL EMPLOYEES WHO HAVE MANAGER ALONG WITH MANAGER'S NAME, DESIGNATION AND MANAGER'S SALARY.
+	(SELF-JOIN)
+
+
+--->select e.employee_id,e.first_name,e.job_id,e.salary,e1.first_name,e1.job_id,e1.salary from employees e right join employees e1 on e.employee_id = e1.employee_id;
+
+
+
+
+  13)  CREATE THE FOLLOWING TABLES:
+       ORDER: {ID, ORDERDATE, ORDERNUMBER}
+       ORDER_ITEM: {ID, ORDERID, PRODUCTID, UNITPRICE, QUANTITY}
+       PRODUCT : {ID, PRODUCTNAME}
+       WRITE A QUERY TO DISPLAY THE FOLLOWING OUTPUT SORTED BY ORDER NO:
+
+--->   select o.order_number,o.order_date,i.quantity,i.unit_price,p.product_name from orders o INNER JOIN order_item i
+    
+    -->  on o.order_id = i.order_id INNER JOIN products p on i.product_id = p.product_id
+    
+    -->  GROUP BY o.order_number;
+
 
 
 14)	 FIND THE 2ND MINIMUM SALARY OF THE EMPLOYEE.
